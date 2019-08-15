@@ -7,7 +7,7 @@ import {Routes,RouterModule} from '@angular/router';
 import { CustDetailComponent } from './cust-detail/cust-detail.component';
 import { MCQComponent } from './mcq/mcq.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { MatButtonModule, MatInputModule, MatCardModule } from '@angular/material';
+import { MatButtonModule,MatInputModule, MatCardModule } from '@angular/material';
 import { QuizServiceService } from './quiz-service.service';
 import { HttpModule } from '@angular/http';
 import {MatSelectModule} from '@angular/material/select';
@@ -42,11 +42,12 @@ const appRoutes:Routes =[
 	ReactiveFormsModule,
 	RouterModule.forRoot(appRoutes),
 	MatButtonModule,
-    MatInputModule,
+   MatInputModule,
     MatCardModule,
 	HttpModule,
 	MatSelectModule,
-  BrowserAnimationsModule,
+  BrowserAnimationsModule
+  ,
   DemoMaterialModule
   ],
   providers: [QuizServiceService],

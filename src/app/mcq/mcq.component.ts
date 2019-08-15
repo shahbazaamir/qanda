@@ -1,5 +1,5 @@
 import { Component, OnInit , Input,ViewChild } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material';
+//import { MatFormFieldModule } from '@angular/material';
 
 import { QuizServiceService } from './../quiz-service.service';
 import { SubjectComponent } from './subject/subject.component';
