@@ -1,4 +1,8 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+
+<nav  mat-tab-nav-bar> 
+   <a   mat-tab-link  routerLink = "cust-detail" > Customer</a>
+   <a  mat-tab-link routerLink= "/mcq"> MCQ </a>
+   <a  mat-tab-link routerLink= "/sign-up"> Sign Up </a>
+   <a  mat-tab-link routerLink= "/app-backoffice"> Back Office </a>
+ </nav>
+ <router-outlet></router-outlet>

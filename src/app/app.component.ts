@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
-  name = 'Angular';
+export class AppComponent {
+  title = 'mcq';
+  
 }
