@@ -1,14 +1,14 @@
 <div class="example-container">
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
  <label>Name:</label>
- <mat-form-field>
+<div>
 <input matInput type="text" name="name" ngModel #refName="ngModel" name="name" required >
-</mat-form-field>
+</div>
 <br/>
  <label>DOB:</label>
- <mat-form-field>
+ <div>
 <input matInput type="text" name="dob" ngModel>
-</mat-form-field>
+</div>
 
 <div [hidden]="refName.valid || refName.pristine" >
 		Please enter a name
