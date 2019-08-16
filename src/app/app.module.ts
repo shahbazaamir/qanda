@@ -17,6 +17,11 @@ import { AnswerComponent } from './mcq/answer/answer.component';
 import { QuestionComponent } from './question/question.component';
 import {DemoMaterialModule} from './material-module';
 import { BackofficeComponent } from './backoffice/backoffice.component';
+import { UpdateComponent } from './backoffice/update/update.component';
+ import { AngularFireModule } from '@angular/fire';
+
+ 
+ 
 
 const appRoutes:Routes =[
 {path:'cust-detail',component: CustDetailComponent},
@@ -34,7 +39,8 @@ const appRoutes:Routes =[
     SubjectComponent,
     AnswerComponent,
     QuestionComponent,
-    BackofficeComponent
+    BackofficeComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
