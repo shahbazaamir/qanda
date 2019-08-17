@@ -21,6 +21,7 @@ import { UpdateComponent } from './backoffice/update/update.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { StartQuizComponent } from './start-quiz/start-quiz.component';
 
 
 
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
   { path: 'cust-detail', component: CustDetailComponent },
   { path: 'mcq', component: MCQComponent },
   { path: 'sign-up', component: SignUpComponent },
-  { path: 'app-backoffice', component: BackofficeComponent }
+  { path: 'app-backoffice', component: BackofficeComponent },
+  {path:'start-quiz',component: StartQuizComponent}
 ];
 
 @NgModule({
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     AnswerComponent,
     QuestionComponent,
     BackofficeComponent,
-    UpdateComponent
+    UpdateComponent,
+    StartQuizComponent
 
   ],
   imports: [
