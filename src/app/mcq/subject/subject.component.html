@@ -1,7 +1,7 @@
 <div>
   <select placeholder="Subject" [(ngModel)]="subject" #subjectDropdown (ngModelChange)="loadQuestion($event);valueChanged($event)"  >
     <option *ngFor="let subject of subjects" [value]="subject.subjectId" >
-      {{subject.subjectDesc}}
+      {{subject.desc}}
     </option>
   </select>
 </div>

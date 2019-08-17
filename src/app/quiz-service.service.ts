@@ -5,13 +5,14 @@ import { Observable } from 'rxjs/Observable';
 import {  HttpClientModule } from '@angular/common/http';
 import {  HttpModule } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/Rx';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizServiceService {
 	
-	constructor(private http:Http) {}
+	constructor(private http:Http , private db: AngularFirestore) {}
 	
 	private dataSource = new BehaviorSubject<String>("");
   data = this.dataSource.asObservable();
@@ -28,7 +29,11 @@ export class QuizServiceService {
     this.dataSource.next(subject);
   }
 
-	loadSubject(){
+loadSubject(){
+  return this.db.collection('subject').valueChanges();
+}
+
+	loadSubjectOld(){
 		return this.http
 		.get('http://localhost:8990/subject/')
 		.map(
