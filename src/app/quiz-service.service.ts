@@ -33,6 +33,13 @@ loadSubject(){
   return this.db.collection('subject').valueChanges();
 }
 
+loadQuestion(){
+  return this.db.collection('question/java/java').valueChanges();
+}
+loadQuestionsBySub(subjectId){
+  return this.db.collection('question/java/'+subjectIdava').valueChanges();
+}
+
 	loadSubjectOld(){
 		return this.http
 		.get('http://localhost:8990/subject/')
@@ -51,7 +58,7 @@ loadSubject(){
 		 
 	}
 	
-	loadQuestions(){
+	loadQuestionsOld(){
 		return this.http
 		.get('http://localhost:8990/question/')
 		.map(
@@ -69,7 +76,7 @@ loadSubject(){
 		 
 	}
 	 
-	loadQuestionsBySub(subjectId){
+	loadQuestionsBySubOld(subjectId){
 		return this.http
 		.get('http://localhost:8990/question/'+subjectId)
 		.map(
