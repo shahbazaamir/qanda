@@ -19,7 +19,7 @@ export class QuestionComponent implements OnInit {
 			.subscribe(
 				(questions1: any[]) => {
 					this.questions = questions1;
-			
+          console.log('1');
 				},
 				(error) => console.log(error)
 		);
@@ -31,7 +31,7 @@ export class QuestionComponent implements OnInit {
 				.subscribe(
 					(questions1: any[]) => {
 						this.questions = questions1;
-				
+            console.log('2');
 					},
 					(error) => console.log(error)
 			);

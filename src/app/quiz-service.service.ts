@@ -26,6 +26,7 @@ export class QuizServiceService {
 	}
 
 	updatedDataSelection(subject){
+    console.log('updatedDataSelection');
     this.dataSource.next(subject);
   }
 
@@ -37,7 +38,8 @@ loadQuestion(){
   return this.db.collection('question/java/java').valueChanges();
 }
 loadQuestionsBySub(subjectId){
-  return this.db.collection('question/java/'+subjectIdava').valueChanges();
+  console.log('subjectId::'+subjectId);
+  return this.db.collection('question/'+subjectId+'/one').valueChanges();
 }
 
 	loadSubjectOld(){
