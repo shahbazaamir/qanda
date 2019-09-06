@@ -25,7 +25,8 @@ export class QuestionComponent implements OnInit {
 		);
 		this.quizService.data.subscribe(
 			(subjectId : String ) =>{
-				this.subjectId=subjectId;
+				console.log('subject observable subscribed');
+        this.subjectId=subjectId;
 				
 				this.quizService.loadQuestionsBySub(this.subjectId)
 				.subscribe(

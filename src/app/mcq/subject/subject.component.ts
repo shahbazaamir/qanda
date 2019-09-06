@@ -35,6 +35,7 @@ export class SubjectComponent implements OnInit {
 	 };
 	 valueChanged() { // You can give any function name
         //this.counter = this.counter + 1;
+        console.log("valueChanged"+this.subject);
 		this.valueChange.emit(this.subject);
 		this.quizService.updatedDataSelection(this.subject);
     }

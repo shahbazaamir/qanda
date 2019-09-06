@@ -20,7 +20,7 @@ export class QuizServiceService {
 	private questionBs = new BehaviorSubject<String>("");
   questionObs = this.questionBs.asObservable();
 	
-	updateQuestion(question){
+	updateQuestion(question){ 
 		console.log('updateQuestion'+question);
 		this.questionBs.next(question);
 	}
@@ -39,6 +39,9 @@ loadQuestion(){
 }
 loadQuestionsBySub(subjectId){
   console.log('subjectId::'+subjectId);
+  if(subjectId == ''){
+    subjectId='dummy';
+  }
   return this.db.collection('question/'+subjectId+'/one').valueChanges();
 }
 
@@ -98,8 +101,13 @@ loadQuestionsBySub(subjectId){
 	
 	loadAnswers(questionId,subjectId){
 		console.log('questionId,subjectId'+questionId+','+subjectId);
-	
-		return this.http
+    if(subjectId == ''){
+    subjectId='dummy';
+  }
+	this.db.collection('question/'+subjectId+'/one'
+  , ref => ref.where('id', '==', questionId)
+  ).valueChanges();
+	/*	return this.http
 		.get('http://localhost:8990/answer/'+questionId+'/'+subjectId)
 		.map(
 			(response: Response) => {
@@ -113,7 +121,7 @@ loadQuestionsBySub(subjectId){
 			  return Observable.throw('Something went wrong');
 			}
 		);
-		
+		*/
 	}
 	delete(subjectId ,questionId ) {
     let promise = new Promise((resolve, reject) => {
