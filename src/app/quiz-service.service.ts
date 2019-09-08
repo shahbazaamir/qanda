@@ -102,13 +102,13 @@ loadQuestionsBySub(subjectId){
 		 
 	}
 	
-	loadAnswers(questionId,subjectId){
+	loadAnswers(subjectId , questionId){
 		console.log('questionId,subjectId'+questionId+','+subjectId);
     if(subjectId == ''){
     subjectId='dummy';
   }
-	this.db.collection('question/'+'jav'+'/answer'
-  //, ref => ref.where('id', '==', '1')
+	return this.db.collection('question/'+subjectId+'/answer'
+  //  , ref => ref.where('id', '==', '1')
   ).valueChanges();
 	/*	return this.http
 		.get('http://localhost:8990/answer/'+questionId+'/'+subjectId)
