@@ -10,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
-export class QuizServiceService {
+export class QuizServiceService { 
 	
 	constructor(private http:Http , private db: AngularFirestore) {}
 	
@@ -31,7 +31,10 @@ export class QuizServiceService {
   }
 
 loadSubject(){
-  return this.db.collection('subject').valueChanges();
+  return this.db.collection('subject'
+   , ref => ref.where('desc', '==', 'Java')
+  ).valueChanges();
+  // , ref => ref.where('id', '==', questionId)
 }
 
 loadQuestion(){
@@ -104,8 +107,8 @@ loadQuestionsBySub(subjectId){
     if(subjectId == ''){
     subjectId='dummy';
   }
-	this.db.collection('question/'+subjectId+'/one'
-  , ref => ref.where('id', '==', questionId)
+	this.db.collection('question/'+'jav'+'/answer'
+  //, ref => ref.where('id', '==', '1')
   ).valueChanges();
 	/*	return this.http
 		.get('http://localhost:8990/answer/'+questionId+'/'+subjectId)
