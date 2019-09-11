@@ -108,7 +108,7 @@ loadQuestionsBySub(subjectId){
     subjectId='dummy';
   }
 	return this.db.collection('question/'+subjectId+'/answer'
-  //  , ref => ref.where('id', '==', '1')
+    , ref => ref.where('id', '==', questionId)
   ).valueChanges();
 	/*	return this.http
 		.get('http://localhost:8990/answer/'+questionId+'/'+subjectId)
