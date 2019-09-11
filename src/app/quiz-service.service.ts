@@ -32,7 +32,7 @@ export class QuizServiceService {
 
 loadSubject(){
   return this.db.collection('subject'
-   , ref => ref.where('desc', '==', 'Java')
+   //, ref => ref.where('desc', '==', 'Java')
   ).valueChanges();
   // , ref => ref.where('id', '==', questionId)
 }
