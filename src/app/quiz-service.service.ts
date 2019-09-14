@@ -11,7 +11,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class QuizServiceService {
-
+  subjectId: any;
   constructor(private http: Http, private db: AngularFirestore) { }
 
   private dataSource = new BehaviorSubject<String>("");
@@ -46,6 +46,14 @@ export class QuizServiceService {
       subjectId = 'dummy';
     }
     return this.db.collection('question/' + subjectId + '/one').valueChanges();
+  }
+
+  loadQuizQuestionsBySub(subjectId) {
+    console.log('subjectId::' + this.subjectId);
+    if (this.subjectId == '') {
+      this.subjectId = 'dummy';
+    }
+    return this.db.collection('question/' + thisubjectId + '/one').valueChanges();
   }
 
   loadSubjectOld() {
@@ -129,18 +137,18 @@ export class QuizServiceService {
 
   loadAnswersBySub(subjectId ) {
     console.log('  loadAnswersBySub subjectId' +   ',' + subjectId);
-    if (subjectId == '') {
-      subjectId = 'dummy';
+    if (this.subjectId == '') {
+      this.subjectId = 'dummy';
     }
-    return this.db.collection('question/' + subjectId + '/answer'   ).valueChanges();
+    return this.db.collection('question/' + this.subjectId + '/answer'   ).valueChanges();
   }
 
 loadOptionsBySub(subjectId ) {
     console.log('  loadOptionsBySub subjectId' +   ',' + subjectId);
-    if (subjectId == '') {
-      subjectId = 'dummy';
+    if (this.subjectId == '') {
+      this.subjectId = 'dummy';
     }
-    return this.db.collection('question/' + subjectId + '/options'   ).valueChanges();
+    return this.db.collection('question/' + this.subjectId + '/options'   ).valueChanges();
   }
 
   delete(subjectId, questionId) {
@@ -163,4 +171,8 @@ loadOptionsBySub(subjectId ) {
     });
     return promise;
   }
+
+  setSubject(subjectId){
+		this.subjectId = subjectId ;
+	}
 }

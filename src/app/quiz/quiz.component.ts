@@ -38,12 +38,13 @@ export class QuizComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('start on init');
     this.sub = this.route
       .data
       .subscribe(v => console.log(v));
  console.log('quiz component on init :'+this.subjectId);
 
-this.quizService.loadQuestionsBySub(this.subjectId)
+this.quizService.loadQuizQuestionsBySub(this.subjectId)
 			.subscribe(
 				(questions1: any[]) => {
 					this.questions = questions1;
