@@ -32,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'app-backoffice', component: BackofficeComponent },
   {path:'start-quiz',component: StartQuizComponent},
+  {path:'quiz',component: QuizComponent}
 ];
 
 @NgModule({
