@@ -15,7 +15,7 @@ export class QuizComponent implements OnInit {
   quizQuestions: Quiz;
   questions;
   answers;
-  
+  options;
   firstLoad=true ;
   question: any;
   option1: any;
@@ -41,7 +41,7 @@ export class QuizComponent implements OnInit {
     this.sub = this.route
       .data
       .subscribe(v => console.log(v));
-
+ console.log('quiz component on init :'+this.subjectId);
 
 this.quizService.loadQuestionsBySub(this.subjectId)
 			.subscribe(
@@ -68,7 +68,7 @@ this.quizService.loadOptionsBySub(this.subjectId)
 					},
 					(error) => console.log(error)
 				);
-
+/*
     this.quizService.loadQuizBySub(this.subjectId)
 			.subscribe(
 				(questions1: any) => {
@@ -82,7 +82,7 @@ this.quizService.loadOptionsBySub(this.subjectId)
 				},
 				(error) => console.log(error)
 		);
-
+*/
   }
   loadQuestion(index){
     //if(this.firstLoad){
