@@ -22,6 +22,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { StartQuizComponent } from './start-quiz/start-quiz.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 
 
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
   { path: 'mcq', component: MCQComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'app-backoffice', component: BackofficeComponent },
-  {path:'start-quiz',component: StartQuizComponent}
+  {path:'start-quiz',component: StartQuizComponent},
 ];
 
 @NgModule({
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     QuestionComponent,
     BackofficeComponent,
     UpdateComponent,
-    StartQuizComponent
+    StartQuizComponent,
+    QuizComponent
 
   ],
   imports: [

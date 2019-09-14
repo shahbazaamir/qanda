@@ -15,7 +15,7 @@ export class MCQComponent implements OnInit  {
 	ngOnInit() {
 		 
 	}
-	/@ViewChild('subjectDropdown')
+	@ViewChild('subjectDropdown')
 	subjectComponent: SubjectComponent;
 
 	
