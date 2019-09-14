@@ -13,6 +13,9 @@ import { Observable } from 'rxjs';
 export class QuizComponent implements OnInit {
   subjectId: any = 20;
   quizQuestions: Quiz;
+  questions;
+  answers;
+  
   firstLoad=true ;
   question: any;
   option1: any;
@@ -38,6 +41,33 @@ export class QuizComponent implements OnInit {
     this.sub = this.route
       .data
       .subscribe(v => console.log(v));
+
+
+this.quizService.loadQuestionsBySub(this.subjectId)
+			.subscribe(
+				(questions1: any[]) => {
+					this.questions = questions1;
+          console.log('1');
+				},
+				(error) => console.log(error)
+		);
+
+    	this.quizService.loadAnswersBySub(this.subjectId)
+				.subscribe(
+					(data1: any[]) => {
+						this.answers = data1;
+						console.log(data1);
+					},
+					(error) => console.log(error)
+				);
+this.quizService.loadOptionsBySub(this.subjectId)
+				.subscribe(
+					(data1: any[]) => {
+						this.options = data1;
+						console.log(data1);
+					},
+					(error) => console.log(error)
+				);
 
     this.quizService.loadQuizBySub(this.subjectId)
 			.subscribe(
