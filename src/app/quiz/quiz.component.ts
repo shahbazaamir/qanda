@@ -63,9 +63,12 @@ export class QuizComponent implements OnInit {
       (data1: any[]) => {
         this.options = data1;
         console.log(data1);
+        this.index = 0;
+          this.loadQuestion(this.index);  
       },
       error => console.log(error)
     );
+     
     /*
     this.quizService.loadQuizBySub(this.subjectId)
 			.subscribe(
@@ -85,11 +88,12 @@ export class QuizComponent implements OnInit {
   loadQuestion(index) {
     //if(this.firstLoad){
     //  this.firstLoad=false;
-    this.question = this.quizQuestions.mcqList[index].question;
-    this.option1 = this.quizQuestions.mcqList[index].option1;
-    this.option2 = this.quizQuestions.mcqList[index].option2;
-    this.option3 = this.quizQuestions.mcqList[index].option3;
-    this.option4 = this.quizQuestions.mcqList[index].option4;
+    //let optIndex = 0;
+    this.question = this.questions[index].desc;
+    this.option1 = this.options[0].desc;
+    this.option2 = this.options[1].desc;
+    this.option3 = this.options[2].desc;
+    this.option4 = this.options[3].desc;
     //}
   }
   next() {
