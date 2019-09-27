@@ -47,6 +47,7 @@ export class QuizComponent implements OnInit {
       (questions1: any[]) => {
         this.questions = questions1;
         console.log("1");
+        console.log(questions1);
       },
       error => console.log(error)
     );
