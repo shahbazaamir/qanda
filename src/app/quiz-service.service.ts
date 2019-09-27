@@ -38,7 +38,7 @@ export class QuizServiceService {
   }
 
   loadQuestion() {
-    return this.db.collection('question/java/java').valueChanges();
+    return this.db.collection('question/java/javaupdatedDataSelection');
   }
   loadQuestionsBySub(subjectId) {
     console.log('subjectId::' + subjectId);
@@ -53,7 +53,7 @@ export class QuizServiceService {
     if (this.subjectId == '') {
       this.subjectId = 'dummy';
     }
-    return this.db.collection('question/' + thisubjectId + '/one').valueChanges();
+    return this.db.collection('question/' + this.subjectId + '/one').valueChanges();
   }
 
   loadSubjectOld() {

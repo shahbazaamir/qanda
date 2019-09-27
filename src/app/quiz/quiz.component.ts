@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { QuizServiceService } from '../quiz-service.service';
-import { Quiz } from './quiz';
-import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from "@angular/core";
+import { QuizServiceService } from "../quiz-service.service";
+import { Quiz } from "./quiz";
+import { ActivatedRoute } from "@angular/router";
+import { map } from "rxjs/operators";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'app-quiz',
-  templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.css']
+  selector: "app-quiz",
+  templateUrl: "./quiz.component.html",
+  styleUrls: ["./quiz.component.css"]
 })
 export class QuizComponent implements OnInit {
   subjectId: any = 20;
@@ -16,60 +16,56 @@ export class QuizComponent implements OnInit {
   questions;
   answers;
   options;
-  firstLoad=true ;
+  firstLoad = true;
   question: any;
   option1: any;
   option2: any;
   option3: any;
   option4: any;
-  index : number = 0;
-  totalQuestions= 0;
+  index: number = 0;
+  totalQuestions = 0;
   sub: any;
   answerSet: any[];
-  constructor(private quizService :QuizServiceService, private route: ActivatedRoute) { 
-
+  constructor(
+    private quizService: QuizServiceService,
+    private route: ActivatedRoute
+  ) {
     const id: Observable<string> = this.route.params.pipe(map(p => p.id));
-    console.log('id');
+    console.log("id");
     console.log(id);
     const user = this.route.data.pipe(map(d => d.user));
-    console.log('user');
+    console.log("user");
     console.log(user);
-
   }
 
   ngOnInit() {
-    console.log('start on init');
-    this.sub = this.route
-      .data
-      .subscribe(v => console.log(v));
- console.log('quiz component on init :'+this.subjectId);
+    console.log("start on init");
+    this.sub = this.route.data.subscribe(v => console.log(v));
+    console.log("quiz component on init :" + this.subjectId);
 
-this.quizService.loadQuizQuestionsBySub(this.subjectId)
-			.subscribe(
-				(questions1: any[]) => {
-					this.questions = questions1;
-          console.log('1');
-				},
-				(error) => console.log(error)
-		);
+    this.quizService.loadQuizQuestionsBySub(this.subjectId).subscribe(
+      (questions1: any[]) => {
+        this.questions = questions1;
+        console.log("1");
+      },
+      error => console.log(error)
+    );
 
-    	this.quizService.loadAnswersBySub(this.subjectId)
-				.subscribe(
-					(data1: any[]) => {
-						this.answers = data1;
-						console.log(data1);
-					},
-					(error) => console.log(error)
-				);
-this.quizService.loadOptionsBySub(this.subjectId)
-				.subscribe(
-					(data1: any[]) => {
-						this.options = data1;
-						console.log(data1);
-					},
-					(error) => console.log(error)
-				);
-/*
+    this.quizService.loadAnswersBySub(this.subjectId).subscribe(
+      (data1: any[]) => {
+        this.answers = data1;
+        console.log(data1);
+      },
+      error => console.log(error)
+    );
+    this.quizService.loadOptionsBySub(this.subjectId).subscribe(
+      (data1: any[]) => {
+        this.options = data1;
+        console.log(data1);
+      },
+      error => console.log(error)
+    );
+    /*
     this.quizService.loadQuizBySub(this.subjectId)
 			.subscribe(
 				(questions1: any) => {
@@ -85,18 +81,18 @@ this.quizService.loadOptionsBySub(this.subjectId)
 		);
 */
   }
-  loadQuestion(index){
+  loadQuestion(index) {
     //if(this.firstLoad){
     //  this.firstLoad=false;
-      this.question = this.quizQuestions.mcqList[index].question;
-      this.option1 = this.quizQuestions.mcqList[index].option1;
-      this.option2 = this.quizQuestions.mcqList[index].option2;
-      this.option3 = this.quizQuestions.mcqList[index].option3;
-      this.option4 = this.quizQuestions.mcqList[index].option4;
+    this.question = this.quizQuestions.mcqList[index].question;
+    this.option1 = this.quizQuestions.mcqList[index].option1;
+    this.option2 = this.quizQuestions.mcqList[index].option2;
+    this.option3 = this.quizQuestions.mcqList[index].option3;
+    this.option4 = this.quizQuestions.mcqList[index].option4;
     //}
   }
-  next(){
-    console.log('next');
+  next() {
+    console.log("next");
     document.getElementById("opt1").style.backgroundColor = "lightblue";
     document.getElementById("opt2").style.backgroundColor = "lightblue";
     document.getElementById("opt3").style.backgroundColor = "lightblue";
@@ -104,20 +100,19 @@ this.quizService.loadOptionsBySub(this.subjectId)
     this.loadQuestion(++this.index);
   }
 
-  previous(){
-    console.log('previous');
+  previous() {
+    console.log("previous");
     this.loadQuestion(--this.index);
   }
 
-  opt1(){
+  opt1() {
     let ans = this.answerSet[this.index].answerId;
-    console.log('ans'+ans);
+    console.log("ans" + ans);
     document.getElementById("opt1").style.backgroundColor = "red";
     document.getElementById("opt2").style.backgroundColor = "red";
     document.getElementById("opt3").style.backgroundColor = "red";
     document.getElementById("opt4").style.backgroundColor = "red";
-    document.getElementById("opt"+ans).style.backgroundColor = "green";
-
+    document.getElementById("opt" + ans).style.backgroundColor = "green";
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
