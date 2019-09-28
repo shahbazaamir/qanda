@@ -17,6 +17,7 @@ export class QuizComponent implements OnInit {
   answers;
   options;
   answer ;
+  ans;
   firstLoad = true;
   question: any;
   option1: any;
@@ -93,13 +94,35 @@ export class QuizComponent implements OnInit {
     this.question = this.questions[index].desc;
     console.log(this.question);
     let answer1 = this.answers.filter( e => e.id == this.questions[index].id ); 
-    this.answer =answer1[getRandomInt(answer1.length)];
+    this.answer =answer1[this.getRandomInt(answer1.length)].desc;
     let optionsById = this.options.filter( e => e.id == this.questions[index].id ); 
     //console.log(answer1[getRandomInt(answer1.length)]);
     this.option1 = optionsById[0].desc;
     this.option2 = optionsById[1].desc;
     this.option3 = optionsById[2].desc;
-    this.option4 = this.answer;
+    this.option4 = optionsById[3].desc;
+    this.ans = this.getRandomInt();
+    switch(this.ans){
+      case  1:
+        this.option1 =  this.answer ;
+      break;
+
+      case 2 :
+        this.option2 =  this.answer ;
+      break;
+
+      case 3 :
+        this.option3 =  this.answer ;
+      break;
+
+      case 4 :
+        this.option4 =  this.answer ;
+      break;
+
+      default :
+      console.log('default');
+      break;
+    }
     //}
   }
   next() {
@@ -117,13 +140,13 @@ export class QuizComponent implements OnInit {
   }
 
   opt1() {
-    let ans = this.answerSet[this.index].answerId;
-    console.log("ans" + ans);
+    //let ans = this.answerSet[this.index].answerId;
+    console.log("ans" + this.ans);
     document.getElementById("opt1").style.backgroundColor = "red";
     document.getElementById("opt2").style.backgroundColor = "red";
     document.getElementById("opt3").style.backgroundColor = "red";
     document.getElementById("opt4").style.backgroundColor = "red";
-    document.getElementById("opt" + ans).style.backgroundColor = "green";
+    document.getElementById("opt" + this.ans).style.backgroundColor = "green";
   }
     getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
