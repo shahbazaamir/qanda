@@ -122,6 +122,10 @@ export class QuizComponent implements OnInit {
     document.getElementById("opt4").style.backgroundColor = "red";
     document.getElementById("opt" + ans).style.backgroundColor = "green";
   }
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
