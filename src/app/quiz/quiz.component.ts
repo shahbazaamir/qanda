@@ -73,7 +73,7 @@ export class QuizComponent implements OnInit {
      
     /*
     this.quizService.loadQuizBySub(this.subjectId)
-			.subscribe(
+			.subscribe( 
 				(questions1: any) => {
 					this.quizQuestions = questions1;
           console.log('in component ');  
@@ -101,7 +101,7 @@ export class QuizComponent implements OnInit {
     this.option2 = optionsById[1].desc;
     this.option3 = optionsById[2].desc;
     this.option4 = optionsById[3].desc;
-    this.ans = this.getRandomInt();
+    this.ans = this.getRandomInt(5);
     switch(this.ans){
       case  1:
         this.option1 =  this.answer ;
