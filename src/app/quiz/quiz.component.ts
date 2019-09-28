@@ -90,6 +90,8 @@ export class QuizComponent implements OnInit {
     //  this.firstLoad=false;
     //let optIndex = 0;
     this.question = this.questions[index].desc;
+    let answer1 = this.answers.filter( e => e.id == this.question.id ); 
+    console.log("answer1 : "+answer1);
     this.option1 = this.options[0].desc;
     this.option2 = this.options[1].desc;
     this.option3 = this.options[2].desc;
