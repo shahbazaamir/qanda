@@ -16,6 +16,7 @@ export class QuizComponent implements OnInit {
   questions;
   answers;
   options;
+  answer ;
   firstLoad = true;
   question: any;
   option1: any;
@@ -92,11 +93,13 @@ export class QuizComponent implements OnInit {
     this.question = this.questions[index].desc;
     console.log(this.question);
     let answer1 = this.answers.filter( e => e.id == this.questions[index].id ); 
-    console.log(answer1);
-    this.option1 = this.options[0].desc;
-    this.option2 = this.options[1].desc;
-    this.option3 = this.options[2].desc;
-    this.option4 = this.options[3].desc;
+    this.answer =answer1[getRandomInt(answer1.length)];
+    let optionsById = this.options.filter( e => e.id == this.questions[index].id ); 
+    //console.log(answer1[getRandomInt(answer1.length)]);
+    this.option1 = optionsById[0].desc;
+    this.option2 = optionsById[1].desc;
+    this.option3 = optionsById[2].desc;
+    this.option4 = this.answer;
     //}
   }
   next() {
@@ -122,7 +125,7 @@ export class QuizComponent implements OnInit {
     document.getElementById("opt4").style.backgroundColor = "red";
     document.getElementById("opt" + ans).style.backgroundColor = "green";
   }
-  function getRandomInt(max) {
+    getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
