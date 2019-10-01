@@ -95,7 +95,20 @@ export class QuizComponent implements OnInit {
     console.log(this.question);
     let answer1 = this.answers.filter( e => e.id == this.questions[index].id ); 
     this.answer =answer1[this.getRandomInt(answer1.length)].desc;
-    let optionsById = this.options.filter( e => e.id == this.questions[index].id ); 
+    // let optionsById = this.options.filter( e => e.id == this.questions[index].id ); 
+
+    let optionsById = this.options.filter( e => {
+			
+			
+			for (f in e.subjects   ){
+				// console.log(f);				
+				if (e.subjects[f]==this.questions[index].id ){
+					return true;
+				}
+			}
+			return false;
+		}
+	)
     //console.log(answer1[getRandomInt(answer1.length)]);
     this.option1 = optionsById[0].desc;
     this.option2 = optionsById[1].desc;
