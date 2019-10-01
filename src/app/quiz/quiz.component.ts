@@ -100,9 +100,9 @@ export class QuizComponent implements OnInit {
     let optionsById = this.options.filter( e => {
 			
 			
-			for (f in e.subjects   ){
+			for (let f in e.id   ){
 				// console.log(f);				
-				if (e.subjects[f]==this.questions[index].id ){
+				if (e.id[f]==this.questions[index].id ){
 					return true;
 				}
 			}
