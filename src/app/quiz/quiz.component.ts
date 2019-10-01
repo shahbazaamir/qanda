@@ -116,6 +116,8 @@ export class QuizComponent implements OnInit {
     this.option4 = optionsById[3].desc;
     this.ans = this.getRandomInt(5);
     switch(this.ans){
+       case  0:
+       this.ans=1;
       case  1:
         this.option1 =  this.answer ;
       break;
@@ -162,7 +164,8 @@ export class QuizComponent implements OnInit {
     document.getElementById("opt" + this.ans).style.backgroundColor = "green";
   }
     getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+    let randomInt=  Math.floor(Math.random() * Math.floor(max));
+    return randomInt;
   }
 
   ngOnDestroy() {
